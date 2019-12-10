@@ -17,7 +17,7 @@ public class AlgoVisualizer {
 
         //初始化视图
         EventQueue.invokeLater(() -> {
-            frame = new AlgoFrame("Welcome", sceneWidth, sceneHeight);
+            frame = new AlgoFrame("InsertionSort", sceneWidth, sceneHeight);
             new Thread(() -> {
                run();
             }).start();

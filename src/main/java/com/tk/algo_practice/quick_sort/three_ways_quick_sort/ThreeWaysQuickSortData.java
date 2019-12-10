@@ -1,31 +1,43 @@
-package com.tk.algo_practice.insertion_sort;
+package com.tk.algo_practice.quick_sort.three_ways_quick_sort;
 
 import java.util.Arrays;
 
 @SuppressWarnings("all")
-public class InsertionSortData {
+public class ThreeWaysQuickSortData {
 
     public enum Type {
         Default,
-        NearlyOrdered
+        NearlyOrdered,
+        Identical
     }
 
     private int[] numbers;
+    public int l, r;
+    public int curPivot;
+    public int curL, curR;
+    public boolean[] fixedPivots;
 
-    public int orderedIndex = -1;         // [0...orderedIndex) 是有序的
-    public int currentIndex = -1;         // 当前处理的元素的索引
-
-    public InsertionSortData(int N, int randomBound, Type dataType) {
+    public ThreeWaysQuickSortData(int N, int randomBound, Type dataType) {
 
         numbers = new int[N];
+        fixedPivots = new boolean[N];
+
+        int lBound = 1;
+        int rBound = randomBound;
+        if (dataType == Type.Identical) {
+            int avgNumber = (lBound + rBound) / 2;
+            lBound = avgNumber;
+            rBound = avgNumber;
+        }
 
         for (int i = 0; i < N; i++) {
-            numbers[i] = (int) (Math.random() * randomBound) + 1;
+            numbers[i] = (int) (Math.random() *(rBound-lBound+1)) + lBound;
+            fixedPivots[i] = false;
         }
 
         if (dataType == Type.NearlyOrdered) {
             Arrays.sort(numbers);
-            int swapTime = (int) (0.02 * N);
+            int swapTime = (int) (0.01 * N);
             for (int i = 0; i < swapTime; i++) {
                 int a = (int) (Math.random() * N);
                 int b = (int) (Math.random() * N);
@@ -34,7 +46,7 @@ public class InsertionSortData {
         }
     }
 
-    public InsertionSortData(int N, int randomBound) {
+    public ThreeWaysQuickSortData(int N, int randomBound) {
         this(N, randomBound, Type.Default);
     }
 

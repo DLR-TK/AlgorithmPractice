@@ -1,21 +1,20 @@
-package com.tk.algo_practice.insertion_sort;
+package com.tk.algo_practice.merge_sort;
 
 import java.util.Arrays;
 
 @SuppressWarnings("all")
-public class InsertionSortData {
+public class MergeSortData {
 
     public enum Type {
         Default,
         NearlyOrdered
     }
 
-    private int[] numbers;
+    public int[] numbers;
+    public int l, r;
+    public int mergeIndex;
 
-    public int orderedIndex = -1;         // [0...orderedIndex) 是有序的
-    public int currentIndex = -1;         // 当前处理的元素的索引
-
-    public InsertionSortData(int N, int randomBound, Type dataType) {
+    public MergeSortData(int N, int randomBound, Type dataType) {
 
         numbers = new int[N];
 
@@ -34,7 +33,7 @@ public class InsertionSortData {
         }
     }
 
-    public InsertionSortData(int N, int randomBound) {
+    public MergeSortData(int N, int randomBound) {
         this(N, randomBound, Type.Default);
     }
 
