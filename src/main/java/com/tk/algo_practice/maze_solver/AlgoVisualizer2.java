@@ -58,7 +58,7 @@ public class AlgoVisualizer2 {
                 int newX = curPos.getX() + d[i][0];
                 int newY = curPos.getY() + d[i][1];
 
-                if (data.isArea(newX, newY) &&
+                if (data.inArea(newX, newY) &&
                         !data.visited[newX][newY] &&
                         data.getMaze(newX, newY) == MazeData.ROAD) {
                     stack.push(new Position(newX, newY, curPos));
@@ -84,7 +84,7 @@ public class AlgoVisualizer2 {
 
     private void setData(int x, int y, boolean isPath) {
 
-        if (data.isArea(x, y)) {
+        if (data.inArea(x, y)) {
             data.path[x][y] = isPath;
         }
 

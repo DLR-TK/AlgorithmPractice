@@ -1,8 +1,6 @@
 package com.tk.algo_practice.maze_solver;
 
 import java.awt.*;
-import java.awt.event.KeyAdapter;
-import java.awt.event.MouseAdapter;
 
 @SuppressWarnings("all")
 public class AlgoVisualizer {
@@ -51,7 +49,7 @@ public class AlgoVisualizer {
      */
     private boolean go(int x, int y) {
 
-        if (!data.isArea(x, y)) {
+        if (!data.inArea(x, y)) {
             throw new IllegalArgumentException("x,y are out of index in go function!");
         }
 
@@ -66,7 +64,7 @@ public class AlgoVisualizer {
         for (int i = 0; i < 4; i++) {
             int newX = x + d[i][0];
             int newY = y + d[i][1];
-            if (data.isArea(newX, newY) &&
+            if (data.inArea(newX, newY) &&
                     data.getMaze(newX, newY) == MazeData.ROAD &&
                     !data.visited[newX][newY]) {
                 if (go(newX, newY)){
@@ -81,7 +79,7 @@ public class AlgoVisualizer {
 
     private void setData(int x, int y, boolean isPath) {
 
-        if (data.isArea(x, y)) {
+        if (data.inArea(x, y)) {
             data.path[x][y] = isPath;
         }
 

@@ -106,14 +106,14 @@ public class MazeData {
 
     public char getMaze(int i, int j) {
 
-        if (!isArea(i, j)) {
+        if (!inArea(i, j)) {
             throw new IllegalArgumentException("i or j is out of index in getMaze!");
         }
 
         return maze[i][j];
     }
 
-    public boolean isArea(int x, int y) {
+    public boolean inArea(int x, int y) {
         return x >= 0 && x < N && y >= 0 && y < M;
     }
 

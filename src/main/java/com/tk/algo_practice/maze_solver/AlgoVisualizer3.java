@@ -2,8 +2,6 @@ package com.tk.algo_practice.maze_solver;
 
 import java.awt.*;
 import java.util.LinkedList;
-import java.util.Queue;
-import java.util.Stack;
 
 @SuppressWarnings("all")
 public class AlgoVisualizer3 {
@@ -60,7 +58,7 @@ public class AlgoVisualizer3 {
                 int newX = curPos.getX() + d[i][0];
                 int newY = curPos.getY() + d[i][1];
 
-                if (data.isArea(newX, newY) &&
+                if (data.inArea(newX, newY) &&
                         !data.visited[newX][newY] &&
                         data.getMaze(newX, newY) == MazeData.ROAD) {
                     queue.addLast(new Position(newX, newY, curPos));
@@ -86,7 +84,7 @@ public class AlgoVisualizer3 {
 
     private void setData(int x, int y, boolean isPath) {
 
-        if (data.isArea(x, y)) {
+        if (data.inArea(x, y)) {
             data.path[x][y] = isPath;
         }
 
