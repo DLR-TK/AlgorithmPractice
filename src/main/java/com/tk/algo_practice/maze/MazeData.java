@@ -1,5 +1,6 @@
 package com.tk.algo_practice.maze;
 
+@SuppressWarnings("all")
 public class MazeData {
 
     public static final char ROAD = ' ';
